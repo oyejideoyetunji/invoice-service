@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "ES2015",
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "strictBindCallApply": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "declaration": true,
+    }
+}

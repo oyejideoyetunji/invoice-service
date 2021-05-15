@@ -4,9 +4,10 @@
   "description": "Backend service for the simple yet powerfull digital invoice system",
   "main": "index.ts",
   "scripts": {
-    "tsc": "tsc",
+    "build": "tsc",
     "start": "node build/index.js",
-    "dev": "ts-node-dev index.ts",
+    "dev": "ts-node-dev src/index.ts",
+    "prod": "npm run build && npm run start",
     "ts-node": "ts-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .ts ."

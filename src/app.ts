@@ -3,6 +3,7 @@ import cors from "cors";
 import config from "./utils/config";
 import mongoose from "mongoose";
 import userRouter from "./routes/user";
+import customMiddleware from "./utils/customMiddleware";
 
 
 class App {
@@ -34,6 +35,9 @@ class App {
                 _res.send("Welcome Home!!")
             }
         });
+
+        this.app.use(customMiddleware.errorHandler);
+        this.app.use(customMiddleware.unknownEndPoint);
     }
 
     private async _connectMongodb(){

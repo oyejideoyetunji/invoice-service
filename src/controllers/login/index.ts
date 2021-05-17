@@ -1,0 +1,52 @@
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { Request, Response, NextFunction } from "express";
+import User from "../../models/user";
+
+
+
+class Login {
+    public async login(_req: Request, _res: Response, _next: NextFunction){
+        const userData = _req.body;
+        if(userData.email && userData.password){
+            try{
+                const user = await User.findOne({ email: userData.email });
+                const isValidUser = !!user
+                    && await bcrypt.compare(userData.password, user.passwordHash);
+
+                if(isValidUser){
+                    const token = jwt.sign(
+                        {email: user.email, id: user._id},
+                        process.env.SECRETE as string
+                    )
+
+                    const loginResponse = {
+                        token,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                        id: user._id.toString()
+                    }
+
+                    _res
+                        .status(200)
+                        .json(loginResponse);
+                }else {
+                    _res
+                        .status(400)
+                        .json({ message: "Error: Invalid email address and/or password." });
+                }
+            }catch(err){
+                _next(err)
+            }
+        }else {
+            _res
+                .status(400)
+                .json({
+                    message: "Error: Bad request format, email and/or password must not be empty"
+                });
+        }
+    }
+}
+
+export default new Login().login;

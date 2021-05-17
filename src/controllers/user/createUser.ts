@@ -10,7 +10,7 @@ class CreateUser {
 
         const userData: IUser = req.body;
         if(!userData.password || userData.password.length < 6){
-            res.status(400).json({ "Error": "Invalid password format" });
+            res.status(400).json({ message: "Invalid password format" });
         }else {
             try{
                 const passwordHash = await bcrypt.hash(userData.password, 10);

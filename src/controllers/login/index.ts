@@ -22,10 +22,12 @@ class Login {
 
                     const loginResponse = {
                         token,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                        id: user._id.toString()
+                        user_data: {
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                            id: user._id.toString()
+                        }
                     }
 
                     _res

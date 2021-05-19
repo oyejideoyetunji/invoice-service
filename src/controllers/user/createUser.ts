@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 import { Request, Response, NextFunction } from "express";
 import { IUser } from "../../lib/types";
 import User from "../../models/user";
@@ -23,9 +24,23 @@ class CreateUser {
                     invoices: userData.invoices || [],
                 });
 
-                const newUser = await user.save();
+                const newUser: any = await user.save();
                 if(newUser){
-                    res.status(201).json(newUser)
+                    const token = jwt.sign(
+                        {email: newUser.email, id: newUser.id},
+                        process.env.SECRETE as string
+                    )
+
+                    const signUpResponse = {
+                        token,
+                        user_data: {
+                            firstName: newUser.firstName,
+                            lastName: newUser.lastName,
+                            email: newUser.email,
+                            id: newUser.id
+                        }
+                    }
+                    res.status(201).json(signUpResponse)
                     console.log("User created successfully");
                 }else {
                     res.status(500).json({

@@ -16,16 +16,18 @@ class Login {
 
                 if(isValidUser){
                     const token = jwt.sign(
-                        {email: user.email, id: user._id},
+                        {email: user.email, id: user.id},
                         process.env.SECRETE as string
                     )
 
                     const loginResponse = {
                         token,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                        id: user._id.toString()
+                        user_data: {
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                            id: user.id
+                        }
                     }
 
                     _res

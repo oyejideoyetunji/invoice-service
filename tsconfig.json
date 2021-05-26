@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./build",
+        "outDir": "../invoice-service-build",
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
@@ -18,6 +18,7 @@
         "alwaysStrict": true,
         "declaration": true,
         "resolveJsonModule": true,
+        "skipLibCheck": true,
         "baseUrl": "./src"
     },
     "include": ["src/**/*.ts"],

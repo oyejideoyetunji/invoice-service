@@ -5,9 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
     "dev": "ts-node-dev src/index.ts",
-    "prod": "npm run build && npm run start",
+    "commit:prod": "npm run build && cd ../invoice-service-build && yarn deploy",
     "ts-node": "ts-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .ts ."
@@ -27,15 +26,15 @@
     "@types/node": "^15.0.3",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/mongoose-unique-validator": "^1.0.4",
     "eslint": "^7.26.0",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/jsonwebtoken": "^8.5.1",
-    "@types/mongoose-unique-validator": "^1.0.4",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",

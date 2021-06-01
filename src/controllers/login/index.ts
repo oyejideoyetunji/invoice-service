@@ -36,7 +36,7 @@ class Login {
                 }else {
                     _res
                         .status(400)
-                        .json({ message: "Error: Invalid email address and/or password." });
+                        .json({ message: "Invalid email address and/or password." });
                 }
             }catch(err){
                 _next(err)
@@ -45,7 +45,7 @@ class Login {
             _res
                 .status(400)
                 .json({
-                    message: "Error: Bad request format, email and/or password must not be empty"
+                    message: "Bad request format, email and/or password must not be empty"
                 });
         }
     }

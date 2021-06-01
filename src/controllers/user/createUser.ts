@@ -41,7 +41,6 @@ class CreateUser {
                         }
                     }
                     res.status(201).json(signUpResponse)
-                    console.log("User created successfully");
                 }else {
                     res.status(500).json({
                         message: "sorry there was an error on the server"

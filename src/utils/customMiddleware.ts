@@ -3,6 +3,18 @@ import { Request, Response, NextFunction } from "express";
 
 
 class CustomMiddleware {
+
+    public tokenExtractor(_req: Request, _res: Response, _next: NextFunction){
+        const authorization = _req.get("authorization")
+
+        // @ts-ignore
+        _req.token = (authorization && authorization.toLowerCase().startsWith("bearer "))
+            ?   authorization.substring(7)
+            :   null;
+
+        _next()
+    }
+    
     public unknownEndPoint(_req: Request, _res: Response){
         _res.status(404).json({ message: "unknown endpoint" })
     }

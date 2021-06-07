@@ -4,6 +4,7 @@ import config from "./utils/config";
 import mongoose from "mongoose";
 import userRouter from "./routes/user";
 import loginRouter from "./routes/login";
+import invoiceRouter from "./routes/invoice";
 import customMiddleware from "./utils/customMiddleware";
 
 
@@ -20,9 +21,11 @@ class App {
 
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use(customMiddleware.tokenExtractor)
 
         this.app.use("/api/user", userRouter);
         this.app.use("/api/login", loginRouter);
+        this.app.use("/api/invoice", invoiceRouter);
 
         this.app.get("/", (_req, _res) => {
             _res.send("Now you'are here")

@@ -25,7 +25,7 @@ class App {
 
         this.app.use("/api/user", userRouter);
         this.app.use("/api/login", loginRouter);
-        this.app.use("/api/invoice", invoiceRouter);
+        this.app.use("/api/invoices", invoiceRouter);
 
         this.app.get("/", (_req, _res) => {
             _res.send("Now you'are here")

@@ -24,6 +24,12 @@ export interface IUser{
     invoices: any[];
 }
 
+export enum IInvoiceStatus{
+    DRAFT = "draft",
+    PENDING = "pending",
+    PAID = "paid"
+}
+
 export interface IInvoiceItem{
     name: string;
     price: number;
@@ -43,8 +49,10 @@ export interface IInvoiceInput{
     clientPostCode: string;
     clientCountry: string;
     invoiceDate: Date;
-    paymentTerms: string;
+    paymentTerms: Date;
     transactionDescription: string;
+    totalAmount: number;
+    status: IInvoiceStatus;
     itemList: IInvoiceItem[];
 }
 
@@ -62,7 +70,9 @@ export interface IInvoice{
     clientPostCode: string;
     clientCountry: string;
     invoiceDate: Date;
-    paymentTerms: string;
+    paymentTerms: Date;
     transactionDescription: string;
+    totalAmount: number;
+    status: IInvoiceStatus;
     itemList: IInvoiceItem[];
 }

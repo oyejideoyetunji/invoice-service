@@ -1,3 +1,4 @@
+import { IInvoiceStatus } from "../lib/types";
 import mongoose from "mongoose";
 import uniqueValidator from "mongoose-unique-validator";
 
@@ -39,8 +40,10 @@ class InvoiceModel {
       clientPostCode: { type: String, required: true },
       clientCountry: { type: String, required: true },
       invoiceDate: { type: Date, required: true },
-      paymentTerms: { type: String, required: true },
+      paymentTerms: { type: Date, required: true },
       transactionDescription: { type: String, required: true },
+      totalAmount: { type: Number, required: true},
+      status: { type: String, enum: Object.values(IInvoiceStatus), required: true },
       itemList: {
         type: [
           {

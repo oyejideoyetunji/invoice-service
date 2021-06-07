@@ -1,5 +1,6 @@
 import express from "express";
 import createInvoice from "../controllers/invoice/createInvoice"
+import ReadInvoice from "../controllers/invoice/readInvoice"
 
 
 class InvoiceRouter {
@@ -8,6 +9,7 @@ class InvoiceRouter {
     constructor(){
         this.invoiceRouter = express.Router();
         this.invoiceRouter.post("/", createInvoice);
+        this.invoiceRouter.get("/", ReadInvoice.readAllUserInvoices)
     }
 }
 

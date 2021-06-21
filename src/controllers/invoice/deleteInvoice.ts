@@ -21,7 +21,7 @@ class DeleteInvoice {
                         user.invoices = user.invoices.filter((id: any) => id.toString() !== invoiceId)
                         await user.save()
 
-                        _res.status(206).json({ message: "invoice deleted successfully" })
+                        _res.status(206).json({ status: "invoice deleted successfully" })
                     } else {
                         _res.status(403).json({ message: "client has no access right to delete resource" })
                     }

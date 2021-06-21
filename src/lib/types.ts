@@ -52,6 +52,7 @@ export interface IInvoiceInput{
     paymentTerms: Date;
     transactionDescription: string;
     totalAmount: number;
+    archivedAt?: Date; 
     status: IInvoiceStatus;
     itemList: IInvoiceItem[];
 }
@@ -73,6 +74,7 @@ export interface IInvoice{
     paymentTerms: Date;
     transactionDescription: string;
     totalAmount: number;
+    archivedAt?: Date;
     status: IInvoiceStatus;
     itemList: IInvoiceItem[];
 }

@@ -11,7 +11,7 @@ class ReadInvoice {
             try {
                 const decodedToken = jwt.verify(token, process.env.SECRETE as Secret) as IDecodedToken
                 if(decodedToken && decodedToken.id){
-                    const invoices = await Invoice.find({ user: decodedToken.id })
+                    const invoices = await Invoice.find({ user: decodedToken.id, archivedAt: null })
                     if(invoices){
                         _res.status(200).json(invoices)
                     } else {

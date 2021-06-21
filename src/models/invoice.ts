@@ -44,6 +44,7 @@ class InvoiceModel {
       transactionDescription: { type: String, required: true },
       totalAmount: { type: Number, required: true},
       status: { type: String, enum: Object.values(IInvoiceStatus), required: true },
+      archivedAt: {type: Date, required: false },
       itemList: {
         type: [
           {

@@ -17,12 +17,13 @@ class CreateInvoice{
                 
                 if(decodedToken && decodedToken.id){
                     const user = await User.findById(decodedToken.id);
+                    const invoices = await Invoice.find({ user: decodedToken.id })
 
                     if(user) {
                         const newInvoice = await new Invoice({
                             ...invoiceInput,
                             user: user._id,
-                            invoiceNumber: `#00${user.invoices.length + 1}`,
+                            invoiceNumber: `#00${invoices.length + 1}`,
                         }).save();
 
                         if(newInvoice){

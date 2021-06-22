@@ -17,7 +17,7 @@ class CreateInvoice{
                 
                 if(decodedToken && decodedToken.id){
                     const user = await User.findById(decodedToken.id);
-                    const invoices = await Invoice.find({ user: decodedToken.id, archivedAt: null })
+                    const invoices = await Invoice.find({ user: decodedToken.id })
 
                     if(user) {
                         const newInvoice = await new Invoice({
